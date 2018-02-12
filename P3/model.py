@@ -110,7 +110,7 @@ def generator(samples, batch_size=64):
                 img_right = cv2.imread(f_right)
                 
                 if img_center is not None and img_center.shape == (160,320,3):
-                    img = img_center
+                    img = cv2.cvtColor(img_center, cv2.COLOR_BGR2RGB)
                     angle = angle_center
                     images.append(img)
                     angles.append(angle)
@@ -121,7 +121,7 @@ def generator(samples, batch_size=64):
                     angles.append(angle_flipped)
  
                 if img_left is not None and img_left.shape == (160,320,3):
-                    img = img_left
+                    img = cv2.cvtColor(img_left, cv2.COLOR_BGR2RGB)
                     angle = angle_left
                     images.append(img)
                     angles.append(angle)
@@ -132,7 +132,7 @@ def generator(samples, batch_size=64):
                     angles.append(angle_flipped)
                     
                 if img_right is not None and img_right.shape == (160,320,3):
-                    img = img_right
+                    img = cv2.cvtColor(img_right, cv2.COLOR_BGR2RGB)
                     angle = angle_right
                     images.append(img)
                     angles.append(angle)
