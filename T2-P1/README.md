@@ -37,11 +37,11 @@ The code successfully take first measurement, predict and update with new measur
 #####Radar and Laser Measurement
  `KalmanFilter::Update` takes laser measurement while  `KalmanFilter::UpdateEKF` takes non-linear, radar measurement.   
 
-In UpdateEKF, radar angle is normalized with
-`y_[1] = atan2(sin(y_[1]),cos(y_[1]));` to prevent data skew from anomaly and help reduce RMSE.
-Following is the comparison before and after normalization.
+In UpdateEKF, radar angle is normalized with `y_[1] = atan2(sin(y_[1]),cos(y_[1]));` to prevent data skew from anomaly and help reduce RMSE.  
+Following is the comparison before and after normalization.  
+
 Before (anomaly data in red box):  
-   ![sim1](https://github.com/na6an/SDCND/blob/master/T2-P1/img/sim1.PNG)  
+   ![sim1](https://github.com/na6an/SDCND/blob/master/T2-P1/img/sim-bef.PNG)  
 After:  
    ![sim2](https://github.com/na6an/SDCND/blob/master/T2-P1/img/sim2.PNG)  
 
