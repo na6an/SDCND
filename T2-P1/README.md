@@ -1,14 +1,14 @@
 # Extended Kalman Filter Project
 
-###Compiling  
+### Compiling  
 This project is confirmed to compile on cmake 3.5.1, GNU make 4.1, gcc 5.4.0 in Ubuntu Bash on Windows 10.
    ![bash1](https://github.com/na6an/SDCND/blob/master/T2-P1/img/bash1.png)
 
-###Accuracy  
+### Accuracy  
 The result RMSE accuracy is 0.095, 0.0875, 0.3696, 0.4624 for px, py, vx, and vy on dataset1.
    ![rmse](https://github.com/na6an/SDCND/blob/master/T2-P1/img/rmse.PNG)
 
-###Follows the Correct Algorithm  
+### Follows the Correct Algorithm  
 *****General Process*****  
 Given the following Kalman Filter formula, algorithm is constructed as general procedure of initialization, prediction, measurement update and evaluation (RMSE).   
 x: estimate  
@@ -44,5 +44,5 @@ Before (anomaly data in red box):
 After:  
    ![sim2](https://github.com/na6an/SDCND/blob/master/T2-P1/img/sim2.PNG)  
 
-###Code Efficiency  
+### Code Efficiency  
 No apparent repetition or data reuse is found.
