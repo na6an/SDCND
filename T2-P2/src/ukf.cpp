@@ -72,13 +72,13 @@ void UKF::ProcessMeasurement(MeasurementPackage measurement_pack) {
     */
     time_us_ = measurement_pack.timestamp_;
 
-    if (measurement_pack.sensor_type_ == MeasurementPackage::RADAR) {
+    if (measurement_pack.sensor_type_ == MeasurementPackage::RADAR && use_radar_) {
       float rho = measurement_pack.raw_measurements_(0);
       float theta = measurement_pack.raw_measurements_(1);
       x_(0) = rho*cos(theta);
       x_(1) = rho*sin(theta);
     }
-    else if (measurement_pack.sensor_type_ == MeasurementPackage::LASER) {
+    else if (measurement_pack.sensor_type_ == MeasurementPackage::LASER && use_laser_) {
       x_(0) = measurement_pack.raw_measurements_(0);
       x_(1) = measurement_pack.raw_measurements_(1);
     }
@@ -89,13 +89,15 @@ void UKF::ProcessMeasurement(MeasurementPackage measurement_pack) {
 
   double delta_t = (measurement_pack.timestamp_ - time_us_) / 1000000.0;
   Prediction(delta_t);
-  if (measurement_pack.sensor_type_ == MeasurementPackage::RADAR) {
+  if (measurement_pack.sensor_type_ == MeasurementPackage::RADAR && use_radar_) {
     UpdateRadar(measurement_pack);
   }
-  else if (measurement_pack.sensor_type_ == MeasurementPackage::LASER) {
+  else if (measurement_pack.sensor_type_ == MeasurementPackage::LASER && use_laser_) {
     UpdateLidar(measurement_pack);
   }
   time_us_ = measurement_pack.timestamp_;
+  //cout << "x_ =" << x_ << endl;
+  //cout << "P_ =" << P_ << endl;
 }
 
 void UKF::Prediction(double delta_t) {
@@ -181,8 +183,6 @@ void UKF::Prediction(double delta_t) {
     //while (x_diff(3)<-M_PI) x_diff(3)+=2.*M_PI;
     P_ = P_ + weights_(i) * x_diff * x_diff.transpose() ;
   }
-  //cout << "x_ =" << x_ << endl;
-  //cout << "P_ =" << P_ << endl;
 }
 
 void UKF::UpdateLidar(MeasurementPackage measurement_pack) {
@@ -206,9 +206,6 @@ void UKF::UpdateLidar(MeasurementPackage measurement_pack) {
 	long x_size = x_.size();
 	MatrixXd I = MatrixXd::Identity(x_size, x_size);
 	P_ = (I - K * H_) * P_;
-
-  //cout << "x_ =" << x_ << endl;
-  //cout << "P_ =" << P_ << endl;
 }
 
 void UKF::UpdateRadar(MeasurementPackage measurement_pack) {
@@ -284,6 +281,4 @@ void UKF::UpdateRadar(MeasurementPackage measurement_pack) {
 
   x_ = x_ + K * z_diff;
   P_ = P_ - K*S*K.transpose();
-  //cout << "x_ =" << x_ << endl;
-  //cout << "P_ =" << P_ << endl;
 }
