@@ -62,13 +62,13 @@ UKF::~UKF() {}
 void UKF::ProcessMeasurement(MeasurementPackage measurement_pack) {
   if (!is_initialized_) {
     //initialize x_, P_, time_us_ime, else
-    cout << "Initialization" << endl;
+    //cout << "Initialization" << endl;
     /*x_ << 1, 1, 0.2, 0.2, 0.2;
-    P_ << 0.1, 0, 0, 0, 0, 
-          0, 0.1, 0, 0, 0, 
-          0, 0, 0.1, 0, 0, 
-          0, 0, 0, 0.1, 0, 
-          0, 0, 0, 0, 0.1;
+    P_ << 1, 0, 0, 0, 0, 
+          0, 1, 0, 0, 0, 
+          0, 0, 1, 0, 0, 
+          0, 0, 0, 1, 0, 
+          0, 0, 0, 0, 1;
     */
     time_us_ = measurement_pack.timestamp_;
 
@@ -99,7 +99,7 @@ void UKF::ProcessMeasurement(MeasurementPackage measurement_pack) {
 }
 
 void UKF::Prediction(double delta_t) {
-  cout << "Prediction " << endl;
+  //cout << "Prediction " << endl;
   VectorXd x_aug = VectorXd(n_aug_);
   MatrixXd P_aug = MatrixXd(n_aug_, n_aug_);
 
@@ -177,16 +177,16 @@ void UKF::Prediction(double delta_t) {
   P_.fill(0.0);
   for (int i = 0; i < 2 * n_aug_ + 1; i++) {
     VectorXd x_diff = Xsig_pred_.col(i) - x_;
-    while (x_diff(3)> M_PI) x_diff(3)-=2.*M_PI;
-    while (x_diff(3)<-M_PI) x_diff(3)+=2.*M_PI;
+    //while (x_diff(3)> M_PI) x_diff(3)-=2.*M_PI;
+    //while (x_diff(3)<-M_PI) x_diff(3)+=2.*M_PI;
     P_ = P_ + weights_(i) * x_diff * x_diff.transpose() ;
   }
-  cout << "x_ =" << x_ << endl;
-  cout << "P_ =" << P_ << endl;
+  //cout << "x_ =" << x_ << endl;
+  //cout << "P_ =" << P_ << endl;
 }
 
 void UKF::UpdateLidar(MeasurementPackage measurement_pack) {
-  cout << "Lidar" << endl;
+  //cout << "Lidar" << endl;
   MatrixXd H_ = MatrixXd(2, 5);
   H_ << 1,0,0,0,0,
         0,1,0,0,0;
@@ -200,7 +200,6 @@ void UKF::UpdateLidar(MeasurementPackage measurement_pack) {
 	VectorXd y = z - z_pred;
 	MatrixXd S = H_ * P_ * H_.transpose() + R_;
 	MatrixXd K = P_ * H_.transpose() * S.inverse();
-  cout << "P_ =" << P_ << endl;
 
 	//new estimate
 	x_ = x_ + (K * y);
@@ -208,12 +207,12 @@ void UKF::UpdateLidar(MeasurementPackage measurement_pack) {
 	MatrixXd I = MatrixXd::Identity(x_size, x_size);
 	P_ = (I - K * H_) * P_;
 
-  cout << "x_ =" << x_ << endl;
-  cout << "P_ =" << P_ << endl;
+  //cout << "x_ =" << x_ << endl;
+  //cout << "P_ =" << P_ << endl;
 }
 
 void UKF::UpdateRadar(MeasurementPackage measurement_pack) {
-  cout << "Radar" << endl;
+  //cout << "Radar" << endl;
   //7-27
   int n_z = 3;
   VectorXd x_aug = VectorXd(n_aug_);
@@ -246,8 +245,8 @@ void UKF::UpdateRadar(MeasurementPackage measurement_pack) {
   S.fill(0.0);
   for (int i = 0; i < 2 * n_aug_ + 1; i++) {
     VectorXd z_diff = Zsig.col(i) - z_pred;
-    while (z_diff(1)> M_PI) z_diff(1)-=2.*M_PI;
-    while (z_diff(1)<-M_PI) z_diff(1)+=2.*M_PI;
+    //while (z_diff(1)> M_PI) z_diff(1)-=2.*M_PI;
+    //while (z_diff(1)<-M_PI) z_diff(1)+=2.*M_PI;
 
     S = S + weights_(i) * z_diff * z_diff.transpose();
   }
@@ -285,6 +284,6 @@ void UKF::UpdateRadar(MeasurementPackage measurement_pack) {
 
   x_ = x_ + K * z_diff;
   P_ = P_ - K*S*K.transpose();
-  cout << "x_ =" << x_ << endl;
-  cout << "P_ =" << P_ << endl;
+  //cout << "x_ =" << x_ << endl;
+  //cout << "P_ =" << P_ << endl;
 }
