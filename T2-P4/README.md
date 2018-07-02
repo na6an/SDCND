@@ -4,9 +4,9 @@ This project is confirmed to compile on cmake 3.5.1, GNU make 4.1, gcc 5.4.0 in 
    ![bash](https://github.com/na6an/SDCND/blob/master/T2-P4/image/bash.PNG)  
 
 ### Result  
-   ![video](https://github.com/na6an/SDCND/blob/master/T2-P4/image/video.mp4)  
+   [https://github.com/na6an/SDCND/blob/master/T2-P4/image/video.mp4](https://github.com/na6an/SDCND/blob/master/T2-P4/image/video.mp4)  
 
-### Further Discussion  
+### Performance 
 It appears spec and environment of the computer running the simulation influence vehicle performance.  
 The vehicle was able to complete a lap without any issue when I don't run anything on background, 
 but running the capturing software took resources away from the simulator and made the vehecle deviate away from the track.  
