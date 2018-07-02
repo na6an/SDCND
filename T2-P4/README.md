@@ -1,10 +1,10 @@
 # PID Controller Project
 ### Compiling  
 This project is confirmed to compile on cmake 3.5.1, GNU make 4.1, gcc 5.4.0 in Ubuntu Bash on Windows 10.  
-   ![bash](https://github.com/na6an/SDCND/master/T2-P4/img/bash.PNG)  
+   ![bash](https://github.com/na6an/SDCND/blob/master/T2-P4/image/bash.PNG)  
 
 ### Result  
-   ![video](https://github.com/na6an/SDCND/master/T2-P4/img/video.mp4)  
+   ![video](https://github.com/na6an/SDCND/blob/master/T2-P4/image/video.mp4)  
 
 ### Further Discussion  
 It appears spec and environment of the computer running the simulation influence vehicle performance.  
