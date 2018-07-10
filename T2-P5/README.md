@@ -24,7 +24,7 @@
     Some function signatures have changed in v0.14.x. See [this PR](https://github.com/udacity/CarND-MPC-Project/pull/3) for more details.
 
 * **Ipopt and CppAD:** Please refer to [this document](https://github.com/udacity/CarND-MPC-Project/blob/master/install_Ipopt_CppAD.md) for installation instructions.
-* [Eigen](http://eigen.tuxfamily.org/index.php?title=Main_Page). This is already part of the repo so you shouldn't have to worry about it.
+* [Eigen](http://eigen.tuxfamily.org/index.php?title=Main_Page).
 * Simulator. You can download these from the [releases tab](https://github.com/udacity/self-driving-car-sim/releases).
 * Not a dependency but read the [DATA.md](./DATA.md) for a description of the data sent back from the simulator.
 
@@ -56,13 +56,13 @@ Unlike from the lecture, desired actuators are preprocessed like following since
 ```
  f0 = coeffs[0] + coeffs[1]*x0 + coeffs[2]*x0*x0 + coeffs[3]*x0*x0*x0;  
  psi_des0 = CppAD::atan(3*coeffs[3]*x0*x0 + 2*coeffs[2]*x0 + coeffs[1]);
- ```
+```
 
 ## Latency
 Latency was a crucial part to run properly.  
 With 100 milisecond was given as a default latency,  
 The initial state values at each time was simply recalculated with latency like following in main.cpp before solved.  
-          ```
+ ```
           double lx = v*cos(steer_value)*latency;
           double ly = v*sin(steer_value)*latency;
           double lpsi = - v*steer_value*latency/Lf;
@@ -72,7 +72,7 @@ The initial state values at each time was simply recalculated with latency like 
           double lepsi = -polyeval(coeffs, lx) - v*polyeval(coeffs, lx)*latency/Lf;
 
           state << lx, ly, lpsi, lv, lcte, lepsi;
-          ```
+```
 
 
 ## Result
