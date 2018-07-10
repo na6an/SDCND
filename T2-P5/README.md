@@ -41,10 +41,12 @@
 This project is confirmed to compile on cmake 3.5.1, GNU make 4.1, gcc 5.4.0 in Ubuntu Bash on Windows 10.
 
 ## The model, Timestep Length and Elapsed Duration (N & dt)
-The model used is standard MPC model.
-![model](https://github.com/na6an/SDCND/blob/master/T2-P5/img/mpc-model.PNG)
+The model used is standard MPC model.  
+![model](https://github.com/na6an/SDCND/blob/master/T2-P5/img/mpc-model.PNG)  
+
 I started from the base code of MPC quiz provided here:  
 [https://github.com/udacity/CarND-MPC-Quizzes](https://github.com/udacity/CarND-MPC-Quizzes)  
+
 Once latency was implemented, it worked fine regardless of different combination of parameter values,  
 whether it was 5 & 0.5, 10 & 0.01 or 25 & 0.05 as long as it was not too extreme.  
 In this repo, 25 & 0.05 is used. Of course, these values are dependent on the speed of vehicle.
