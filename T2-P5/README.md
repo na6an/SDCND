@@ -51,17 +51,19 @@ In this repo, 25 & 0.05 is used. Of course, these values are dependent on the sp
 
 ## Polynomial Fitting and MPC Preprocessing
 Polynomial was fitted to 3rd order to reflect the curve as follows.  
- `auto coeffs = polyfit(ptsx_transform, ptsy_transform, 3);`
+ `auto coeffs = polyfit(ptsx_transform, ptsy_transform, 3);`  
 Unlike from the lecture, desired actuators are preprocessed like following since it was fitted to 3rd order.  
- `f0 = coeffs[0] + coeffs[1]*x0 + coeffs[2]*x0*x0 + coeffs[3]*x0*x0*x0;
- psi_des0 = CppAD::atan(3*coeffs[3]*x0*x0 + 2*coeffs[2]*x0 + coeffs[1]);`
+```
+ f0 = coeffs[0] + coeffs[1]*x0 + coeffs[2]*x0*x0 + coeffs[3]*x0*x0*x0;  
+ psi_des0 = CppAD::atan(3*coeffs[3]*x0*x0 + 2*coeffs[2]*x0 + coeffs[1]);
+ ```
 
 ## Latency
 Latency was a crucial part to run properly.  
 With 100 milisecond was given as a default latency,  
 The initial state values at each time was simply recalculated with latency like following in main.cpp before solved.  
-
-         `double lx = v*cos(steer_value)*latency;
+          ```
+          double lx = v*cos(steer_value)*latency;
           double ly = v*sin(steer_value)*latency;
           double lpsi = - v*steer_value*latency/Lf;
           double lv = v + throttle_value*latency;
@@ -69,7 +71,8 @@ The initial state values at each time was simply recalculated with latency like 
           double lcte = coeffs[0] + v*sin(-atan(coeffs[1]))*latency;
           double lepsi = -polyeval(coeffs, lx) - v*polyeval(coeffs, lx)*latency/Lf;
 
-          state << lx, ly, lpsi, lv, lcte, lepsi;`
+          state << lx, ly, lpsi, lv, lcte, lepsi;
+          ```
 
 
 ## Result
