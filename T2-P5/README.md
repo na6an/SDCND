@@ -7,11 +7,12 @@ See Udacity CarND-MPC-Project repo for detail.
 
 ## Basic Build Instructions
 1. Clone this repo.  
-2. This repo does NOT include Eigen library.  
+2. Make sure above dependencies are fulfilled.
+3. This repo does NOT include Eigen library.  
    Copy from src dir in CarND-MPC-Project repo above.
-3. Make a build directory: `mkdir build && cd build`  
-4. Compile: `cmake .. && make`  
-5. Run it: `./mpc`.  
+4. Make a build directory: `mkdir build && cd build`  
+5. Compile: `cmake .. && make`  
+6. Run it: `./mpc`.  
 
 ## Compiling  
 This project is confirmed to compile on cmake 3.5.1, GNU make 4.1, gcc 5.4.0 in Ubuntu Bash on Windows 10.
@@ -23,9 +24,10 @@ The model used is standard MPC model.
 I started from the base code of MPC quiz provided here:  
 [https://github.com/udacity/CarND-MPC-Quizzes](https://github.com/udacity/CarND-MPC-Quizzes)  
 
-Once latency was implemented, it worked fine regardless of different combination of parameter values,  
-whether it was 5 & 0.5, 10 & 0.01 or 25 & 0.05 as long as it was not too extreme.  
-In this repo, 25 & 0.05 is used. Of course, these values are dependent on the speed of vehicle.
+Too few N (less than 5) tends to fail to fit to the model,   
+on the other hand large N slows down the simulation and overextend predicted waypoints.  
+Lower dt usually is better, but it determines how much prediction ahead to calculate require higher N.  
+In this repo, 10 & 0.1 is used. Of course, these values are dependent on the speed of vehicle.
 
 ## Polynomial Fitting and MPC Preprocessing
 Polynomial was fitted to 3rd order to reflect the curve as follows.  
