@@ -17,7 +17,10 @@ PID = (-1,0,0)
 (-0.6,0,-5)  
 ![i-0](https://github.com/na6an/SDCND/blob/master/T2-P4/image/i-0.gif)  
 
-I also attempted basic twiddle in the model, but it appears making it work takes longer time than manual tuning at this point.  
+One thing I observed was, "I" parameter has little effect making the model better.  
+Perhaps this is due to the simulation environment, where there is no wheel balance needed.  
+
+I also attempted basic twiddle in the model, but it appears making it work is more time consuming than manual tuning at this point.  
 What I adopted instead, is a dynamic speed change because I think tuning only the PID values to control steer is insufficient.  
 Basically it slows down when the vehicle turns at the corner or as it deviates more from cte.  
 This is the reason simulations above doesn't shoot out of the track even with poor PID tuning.  
