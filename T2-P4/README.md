@@ -9,13 +9,13 @@ began to increase P until it can handle the sharp turn but not enough to turn to
 Then, increased D and I until it makes a lap stable. Following are some examples of different parameters.  
 
 PID = (-1,0,0)  
-![p-1](https://github.com/na6an/SDCND/blob/master/T2-P4/image/p-1.gif)  
+[https://youtu.be/RNQ-9YH_NHk](https://youtu.be/RNQ-9YH_NHk)  
 (-0.4,0,0)  
-![p-0.4](https://github.com/na6an/SDCND/blob/master/T2-P4/image/p-0.4.gif)  
+[https://youtu.be/tyWrThhRelc](https://youtu.be/tyWrThhRelc)  
 (-0.6,0,0)  
-![d-0](https://github.com/na6an/SDCND/blob/master/T2-P4/image/d-0.gif)  
+[https://youtu.be/zUI4Cs779o0](https://youtu.be/zUI4Cs779o0)  
 (-0.6,0,-5)  
-![i-0](https://github.com/na6an/SDCND/blob/master/T2-P4/image/i-0.gif)  
+[https://youtu.be/NprE0E6Z-EU](https://youtu.be/NprE0E6Z-EU)
 
 One thing I observed was, "I" parameter has little effect making the model better.  
 Perhaps this is due to the simulation environment, where there is no wheel balance needed.  
