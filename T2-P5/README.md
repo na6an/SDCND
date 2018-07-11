@@ -57,4 +57,4 @@ The initial state values at each time was simply recalculated with latency like 
 
 ## Result
 
-[https://github.com/na6an/SDCND/blob/master/T2-P5/img/video_mpc.mp4](https://github.com/na6an/SDCND/blob/master/T2-P5/img/video_mpc.mp4)
+[https://youtu.be/3wRtn_VCbSQ](https://youtu.be/3wRtn_VCbSQ)
