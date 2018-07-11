@@ -26,7 +26,7 @@ Basically it slows down when the vehicle turns at the corner or as it deviates m
 This is the reason simulations above doesn't shoot out of the track even with poor PID tuning.  
 
 ### Result  
-   [https://github.com/na6an/SDCND/blob/master/T2-P4/image/video.mp4](https://github.com/na6an/SDCND/blob/master/T2-P4/image/video.mp4)  
+   [https://youtu.be/rivilUm7wUQ](https://youtu.be/rivilUm7wUQ)  
 
 ### Performance 
 It appears spec and environment of the computer running the simulation influence vehicle performance.  
