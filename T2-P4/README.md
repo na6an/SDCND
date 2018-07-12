@@ -20,7 +20,7 @@ PID = (-1,0,0)
 ![https://github.com/na6an/SDCND/blob/master/T2-P4/image/pid.png](https://github.com/na6an/SDCND/blob/master/T2-P4/image/pid.png)  
 While above is the effect of PID covered in one of the lecture slides,  
 following is the overlapped path of PID combinations.  
-![https://github.com/na6an/SDCND/blob/master/T2-P4/image/pid%20path.png](https://github.com/na6an/SDCND/blob/master/T2-P4/image/pid%20path.png)  
+![https://github.com/na6an/SDCND/blob/master/T2-P4/image/pid-path.png](https://github.com/na6an/SDCND/blob/master/T2-P4/image/pid-path.png)  
 Higher value of P helps vehicle to make a sharp turn but also contribute the oscillation more severe.  
 Higher value of D reduces oscillation to make driving smoother but up until certain point.  
 One thing I observed was, "I" parameter has little effect making the model better.  
