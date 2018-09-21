@@ -67,6 +67,11 @@ There were several other issues found including (see the capture image below for
 To resolve these issues, Several if conditions were used to adjust values base on different sizes.  
 For example in “pipeline()”logic, 
 
+```
+vertices = np.array([[(50,y2-50),(x1, y1), (x2, y1), (imshape[1]-50,y2-50)]], dtype=np.int32)
+if imshape[1] == 1280:
+    vertices = np.array([[(300,y2-70),(x1, 450), (x2, 450), (imshape[1]-100,y2-70)]], dtype=np.int32)
+```
 
 As you can see, there are some adjustment of variables/hard code values to adjust vertices for the region of interest.  
 Similar condition is applied in “draw_lines_improve()”function when determining the line coorinates to draw base on regression values.  
@@ -74,5 +79,6 @@ Similar condition is applied in “draw_lines_improve()”function when determin
 ## Conclusion and some thoughts 
 The code logic is not perfectas the solid lines are littleshaking in “challenge.mp4”video.  
 Sure it could be improved further at least on thevideos given, and I will continue refining.  
+
 Also, it is expected to be vulnerable in cases such as –when there is white truck is on the front, there is no road lanes exist, light reflection from mirror blurring the camera focus, different weather conditions, etc. 
 However, I know this can be improved as sensor fusion and deep learning comes into play.
