@@ -55,14 +55,13 @@ The size of “challenge.mp4” is 720P (1280x720) compared to 980x540 in other 
 This made masking the region of interest and draw line functions to go off.  
 
 There were several other issues found including (see the capture image below for some of issues):  
+  <img src="https://github.com/na6an/SDCND/blob/master/P1/img1.PNG" alt="alt text" width="520" height="320">   
   1.The hood of vehicle takes about 50 pixels of the bottom of video.  
   2.The road is curved to the right and slanted slightly, creating the gap difference between lines and edge of the video.  
   3.There is central reservation divider on the left has more distinct edge than yellow lane.  
   4.There is a section of the video where the white lane on the right almost disappears out of region of interest.  
   5.Some debris on the road are very white  
   6.Road color/shadow changes  
-
-
 
 To resolve these issues, Several if conditions were used to adjust values base on different sizes.  
 For example in “pipeline()”logic, 
